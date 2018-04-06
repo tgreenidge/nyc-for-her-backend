@@ -1,20 +1,13 @@
-package com.example.usersapi.models;
+package com.example.models;
 
-import com.example.organizationsapi.models.Organization;
 import lombok.*;
 
 import javax.persistence.*;
 import java.util.Set;
 
-
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
-@Getter
-@Setter
-@Entity
-@Builder
-@Table(name = "USERS")
+@AllArgsConstructor @NoArgsConstructor @Getter @Setter
+@Entity @Table(name = "USERS")
 public class User {
 
     @Id
@@ -33,9 +26,5 @@ public class User {
     public User(String email, String password) {
         this.email = email;
         this.password = password;
-    }
-
-    public User(String email) {
-        this.email = email;
     }
 }

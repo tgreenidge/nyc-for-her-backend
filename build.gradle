@@ -60,15 +60,26 @@ task waitForUsersAPI(type: Exec) {
 	commandLine './wait-for-api.sh','http://localhost:8080/users', 'Users API'
 }
 
+task waitForOrganizationsAPI(type: Exec) {
+	commandLine './wait-for-api.sh','http://localhost:8080/organizations', 'Organizations API'
+}
+
 task runUsersAPITests(type: Exec) {
 	workingDir './users-api'
+	commandLine './gradlew', 'test'
+}
+
+task runOrganizationsAPITests(type: Exec) {
+	workingDir './organizations-api'
 	commandLine './gradlew', 'test'
 }
 
 task allTests(type: Test) {
 	dependsOn cleanTest
 	dependsOn waitForUsersAPI
+	dependsOn waitForOrganizationsAPI
 	dependsOn runUsersAPITests
+	dependsOn runOrganizationsAPITests
 
 	testLogging {
 		exceptionFormat "full"
@@ -80,6 +91,7 @@ task allTests(type: Test) {
 test {
 	dependsOn cleanTest
 	dependsOn waitForUsersAPI
+	dependsOn waitForOrganizationsAPI
 
 	testLogging {
 		exceptionFormat "full"

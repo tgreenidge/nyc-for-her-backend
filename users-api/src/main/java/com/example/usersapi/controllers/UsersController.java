@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import com.example.usersapi.models.User;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
